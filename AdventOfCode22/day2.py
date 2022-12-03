@@ -11,7 +11,7 @@ codes ={"A":"rock", "B":"paper", "C":"scissors", "X":"rock", "Y":"paper", "Z":"s
 points = {"X": 1, "Y": 2, "Z": 3, "A": 1, "B": 2, "C": 3}
 
 #open file with while loop 
-def compare(Opponent, you):
+def determine_result(Opponent, you):
   if codes[Opponent] == codes[you]:
     return 3
   elif codes[Opponent] == "rock" and codes[you] == "paper":
@@ -57,7 +57,7 @@ for line in lines:
   Opponent = round[0]
   expected_result = round[1]
   you = determine_move(Opponent, expected_result)
-  round_score = points[you] + compare(Opponent, you)
+  round_score = points[you] + determine_result(Opponent, you)
   result += round_score
   
   
