@@ -116,23 +116,26 @@ for line in lines:
 
 
 used_space = root.size()
-needed_space = 70000000 - used_space
+total_space = 70000000
+needed_space = 30000000
+free_space = total_space - used_space
+required_size = needed_space - free_space
 print(used_space, needed_space)
 
 queue = [root]
-result = 0
+delete_candidates = []
 
 while len(queue) > 0:
     item = queue.pop(0)
     size = item.size()
-    if (size <= 100000):
-        result += size
+    if (size > required_size):
+        delete_candidates.append(size)
     for child in item.children:
         if isinstance(child, Folder):
             queue.append(child)
 
 
-print(result)
+print(min(delete_candidates))
 # print(tree)
 # result_list = {}
 # def calc_dir_size(dir, tree):
